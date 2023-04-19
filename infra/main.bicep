@@ -25,7 +25,7 @@ module acaEnvironment './core/host/container-apps-environment.bicep' = {
   scope: rg
   params: {
     name: acaEnvironmentName
-    location: acaLocation
+    location: location
     tags: tags
   }
 }
@@ -35,7 +35,7 @@ module postgreSql './core/host/springboard-container-app.bicep' = {
   scope: rg
   params: {
     name: postgreSqlName
-    location: acaLocation
+    location: location
     tags: tags
     managedEnvironmentId: acaEnvironment.outputs.id
     serviceType: 'postgres'
@@ -47,7 +47,7 @@ module redis './core/host/springboard-container-app.bicep' = {
   scope: rg
   params: {
     name: redisCacheName
-    location: acaLocation
+    location: location
     tags: tags
     managedEnvironmentId: acaEnvironment.outputs.id
     serviceType: 'redis'
@@ -60,7 +60,7 @@ module api './core/host/container-app.bicep' = {
   scope: rg
   params: {
     name: apiServiceName
-    location: acaLocation
+    location: location
     tags: tags
     managedEnvironmentId: acaEnvironment.outputs.id
     imageName: apiImageName
@@ -79,7 +79,7 @@ module web './core/host/container-app.bicep' = {
   scope: rg
   params: {
     name: webServiceName
-    location: acaLocation
+    location: location
     tags: tags
     managedEnvironmentId: acaEnvironment.outputs.id
     imageName: webImageName
@@ -98,7 +98,7 @@ module web './core/host/container-app.bicep' = {
 //   scope: rg
 //   params: {
 //     name: 'pgweb'
-//     location: acaLocation
+//     location: location
 //     tags: tags
 //     managedEnvironmentId: acaEnvironment.outputs.id
 //     imageName: 'docker.io/sosedoff/pgweb:latest'
@@ -121,7 +121,7 @@ module web './core/host/container-app.bicep' = {
 //   scope: rg
 //   params: {
 //     name: 'redis-stat'
-//     location: acaLocation
+//     location: location
 //     tags: tags
 //     managedEnvironmentId: acaEnvironment.outputs.id
 //     imageName: 'docker.io/insready/redis-stat:latest'
@@ -144,7 +144,7 @@ module web './core/host/container-app.bicep' = {
 //   scope: rg
 //   params: {
 //     name: 'kafka-1'
-//     location: acaLocation
+//     location: location
 //     managedEnvironmentId: acaEnvironment.outputs.id
 //     serviceType: 'kafka'
 //   }
@@ -155,7 +155,7 @@ module web './core/host/container-app.bicep' = {
 //   scope: rg
 //   params: {
 //     name: 'kafka-ui-1'
-//     location: acaLocation
+//     location: location
 //     managedEnvironmentId: acaEnvironment.outputs.id
 //     imageName: ''
 //     targetPort: 8080
